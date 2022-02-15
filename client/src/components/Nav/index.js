@@ -1,17 +1,19 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import logo from "../../assets/craftnepal.png";
+
+import { QUERY_CATEGORIES } from "../../utils/queries";
 
 function Nav() {
+  function showCategories() {}
 
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul class="navbar-nav mr-auto">
           <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
+            <Link to="/orderHistory">Order History</Link>
           </li>
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -23,16 +25,12 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
+        <ul class="navbar-nav mr-auto">
           <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
+            <Link to="/signup">Signup</Link>
           </li>
           <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       );
@@ -40,17 +38,41 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          -Shop-Shop
-        </Link>
-      </h1>
+    <header className="d-flex align-items-center">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-3 col-lg-2">
+            <h1>
+              <Link to="/">
+                <img src={logo} alt="Craft from Nepal" />
+              </Link>
+            </h1>
+          </div>
+          <div className="col-sm-9 col-lg-10">
+            <nav className="navbar">
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-      <nav>
-        {showNavigation()}
-      </nav>
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
+                {showNavigation()}
+              </div>
+            </nav>
+            
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

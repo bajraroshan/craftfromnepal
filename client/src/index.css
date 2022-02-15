@@ -1,10 +1,11 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
+  --primary: #8b4726;
+  --secondary: #dc143c;
+  --tertiary: #003893;
   --light: #fafafa;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
+  --light-dark: #777;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
@@ -80,7 +81,8 @@ a:hover {
 }
 
 header {
-  background: var(--primary);
+  background: var(--light-dark);
+  min-height: 7.5rem;
 }
 
 header a {
