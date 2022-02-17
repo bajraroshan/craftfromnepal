@@ -9,6 +9,10 @@ import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
 function CategoryMenu() {
+  
+
+  
+
   const [state, dispatch] = useStoreContext();
 
   const { categories } = state;
@@ -35,6 +39,7 @@ function CategoryMenu() {
   }, [categoryData, loading, dispatch]);
 
   const handleClick = (id) => {
+    
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
@@ -42,9 +47,9 @@ function CategoryMenu() {
   };
 
   return (
-    <div>
-      <h2>Choose a Category:</h2>
-      {categories.map((item) => (
+    <ul className='category-nav'>
+      {categories.map((item, index) => (
+        <li>
         <button
           key={item._id}
           onClick={() => {
@@ -53,8 +58,9 @@ function CategoryMenu() {
         >
           {item.name}
         </button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

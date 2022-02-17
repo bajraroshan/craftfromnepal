@@ -1,15 +1,16 @@
 import React from "react";
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
-import Cart from "../components/Cart";
+import Banner from "../components/Banner";
+import FeatureList from "../components/FeatureList";
+import { Container } from "react-bootstrap";
 
 const Home = () => {
   return (
-    <div className="container">
-      <CategoryMenu />
-      <ProductList />
-      <Cart />
-    </div>
+    <>
+      <Banner />
+      <Container>
+        <FeatureList />
+      </Container>
+    </>
   );
 };
 

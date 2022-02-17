@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ProductItem from '../ProductItem';
+import FeatureItem from '../FeatureItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
@@ -9,7 +9,7 @@ import spinner from '../../assets/spinner.gif';
 
 import { Row } from "react-bootstrap";
 
-function ProductList() {
+function FeatureList() {
   const [state, dispatch] = useStoreContext();
 
   const { currentCategory } = state;
@@ -46,11 +46,13 @@ function ProductList() {
   }
 
   return (
-    <>
+    <div className="featured-products">
+      <h2>Featured Products</h2>
       {state.products.length ? (
         <Row>
-          {filterProducts().map((product) => (
-            <ProductItem
+          {filterProducts().map((product, index) => 
+            index < 8 && ( // <= only 8 items
+            <FeatureItem
               key={product._id}
               _id={product._id}
               image={product.image}
@@ -64,8 +66,8 @@ function ProductList() {
         <h3>You haven't added any products yet!</h3>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
-    </>
+    </div>
   );
 }
 
-export default ProductList;
+export default FeatureList;

@@ -6,7 +6,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
-function ProductItem(item) {
+function FeatureItem(item) {
   const [state, dispatch] = useStoreContext();
 
   const { image, name, _id, price, quantity } = item;
@@ -35,7 +35,7 @@ function ProductItem(item) {
   };
 
   return (
-    <Col xs md="6" lg="4">
+    <Col xs md="4" lg="3">
       <div className="card single-product">
       <Link to={`/products/${_id}`}>
         <img alt={name} src={`/images/${image}`} />
@@ -57,4 +57,4 @@ function ProductItem(item) {
   );
 }
 
-export default ProductItem;
+export default FeatureItem;

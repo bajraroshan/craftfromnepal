@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { pluralize } from "../utils/helpers";
 import { useQuery } from '@apollo/client';
+
+import { Container, Row, Col } from "react-bootstrap";
 
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
@@ -84,32 +87,42 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
-          <Link to="/">← Back to Products</Link>
-
-          <h2>{currentProduct.name}</h2>
-
-          <p>{currentProduct.description}</p>
-
-          <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
-            </button>
-          </p>
-
-          <img
+        <Container className='m-5'>
+          <Row>
+            <Col xs lg="6">
+            <img
             src={`/images/${currentProduct.image}`}
             alt={currentProduct.name}
           />
-        </div>
+            </Col>
+            <Col xs lg="6">
+            <h2>{currentProduct.name}</h2>
+            <strong>Price:</strong>${currentProduct.price}{' '}
+
+<p>{currentProduct.description}</p>
+
+{currentProduct.quantity <= 0 ? (
+          <p style={{ color: "red" }}>Out Of Stock</p>
+        ) : (
+          <p style={{ color: "green" }}>
+            {currentProduct.quantity} {pluralize("item", currentProduct.quantity)} in stock
+          </p>
+        )}
+<p>
+            <button onClick={addToCart}>Add to Cart</button>
+            
+          </p>
+              </Col>
+          </Row>
+          
+
+         
+          
+
+          
+        </Container>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
-      <Cart />
     </>
   );
 }

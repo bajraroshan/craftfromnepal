@@ -1,44 +1,42 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { Navbar, Nav, Container } from "react-bootstrap";
+
 import logo from "../../assets/craftnepal.png";
 
-import { QUERY_CATEGORIES } from "../../utils/queries";
-
-function Nav() {
-  function showCategories() {}
-
+function Navigation() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul class="navbar-nav mr-auto">
-          <li className="mx-1">
-            <Link to="/orderHistory">Order History</Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+        <>
+          <Nav.Item>
+            <Nav.Link href="/" onClick={() => Auth.logout()}>
               Logout
-            </a>
-          </li>
-        </ul>
+            </Nav.Link>
+          </Nav.Item>
+        </>
       );
     } else {
       return (
-        <ul class="navbar-nav mr-auto">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <>
+          <Nav.Item>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Link to="/signup" className="nav-link">
+              Signup
+            </Link>
+          </Nav.Item>
+        </>
       );
     }
   }
 
   return (
-    <header className="d-flex align-items-center">
+    <header>
       <div className="container">
         <div className="row">
           <div className="col-sm-3 col-lg-2">
@@ -49,27 +47,40 @@ function Nav() {
             </h1>
           </div>
           <div className="col-sm-9 col-lg-10">
-            <nav className="navbar">
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
+            <Navbar>
+              <Container>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse
+                  id="basic-navbar-nav"
+                  className="justify-content-end"
+                >
+                  <Nav>
+                    <Nav.Item>
+                      <Link to="/" className="nav-link">
+                        Home
+                      </Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Link to="/products" className="nav-link">
+                        Products
+                      </Link>
+                    </Nav.Item>
+                    {showNavigation()}
 
-              <div
-                className="collapse navbar-collapse"
-                id="navbarSupportedContent"
-              >
-                {showNavigation()}
-              </div>
-            </nav>
-            
+                    <Nav.Item>
+                      <Link to="/cart" className="nav-link">
+                        Cart
+                      </Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Link to="/contact" className="nav-link">
+                        Contact
+                      </Link>
+                    </Nav.Item>
+                  </Nav>
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
           </div>
         </div>
       </div>
@@ -77,4 +88,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Navigation;
