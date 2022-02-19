@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import { useLazyQuery } from '@apollo/client';
-import { QUERY_CHECKOUT } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
-import CartItem from '../CartItem';
-import Auth from '../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
-import './style.css';
+import React, { useEffect } from "react";
+import { Table } from "react-bootstrap";
+import { loadStripe } from "@stripe/stripe-js";
+import { useLazyQuery } from "@apollo/client";
+import { QUERY_CHECKOUT } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
+import CartItem from "../CartItem";
+import Auth from "../../utils/auth";
+import { useStoreContext } from "../../utils/GlobalState";
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
+import "./style.css";
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
@@ -25,7 +26,7 @@ const Cart = () => {
 
   useEffect(() => {
     async function getCart() {
-      const cart = await idbPromise('cart', 'get');
+      const cart = await idbPromise("cart", "get");
       dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
     }
 
@@ -59,30 +60,47 @@ const Cart = () => {
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
-      {state.cart.length ? (
-        <div>
-          {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
-          ))}
+      <Table striped hover size="md">
+        <thead>
+          <tr>
+            <th colSpan={2}>Product Name</th>
+            <th className="text-center">Quantity</th>
+            <th className="text-center">Action</th>
+          </tr>
+        </thead>
+        {state.cart.length ? (
+          <tbody>
+            {state.cart.map((item) => (
+              <CartItem key={item._id} item={item} />
+            ))}
 
-          <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
-
-            {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
-            ) : (
-              <span>(log in to check out)</span>
-            )}
-          </div>
-        </div>
-      ) : (
-        <h3>
-          <span role="img" aria-label="shocked">
-            😱
-          </span>
-          You haven't added anything to your cart yet!
-        </h3>
-      )}
+            <tr>
+              <td colSpan={4}>
+                <div className="total-row">
+                  <strong>Total: ${calculateTotal()}</strong>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan={4} className='text-right'>
+                {Auth.loggedIn() ? (
+                  <button onClick={submitCheckout}>Checkout</button>
+                ) : (
+                  <span>(log in to check out)</span>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        ) : (
+          <tbody>
+            <tr>
+              <td colSpan={4}>
+                <h3>You haven't added anything to your cart yet!</h3>
+              </td>
+            </tr>
+          </tbody>
+        )}
+      </Table>
     </div>
   );
 };

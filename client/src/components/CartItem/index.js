@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+
 
 const CartItem = ({ item }) => {
 
@@ -37,23 +39,27 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <div className="flex-row">
-      <div>
+    <tr>
+      <td width='70'>
         <img
           src={`/images/${item.image}`}
-          alt=""
+          alt={item.name}
         />
-      </div>
-      <div>
-        <div>{item.name}, ${item.price}</div>
-        <div>
-          <span>Qty:</span>
+      </td>
+      <td>
+        <h5 className='cart-product-name'>{item.name}</h5>
+        <div className='cart-product-price'>${item.price}</div>
+      </td>
+      <td className='text-center'>
+        
           <input
             type="number"
             placeholder="1"
             value={item.purchaseQuantity}
             onChange={onChange}
           />
+        </td>
+        <td className='text-center'>
           <span
             role="img"
             aria-label="trash"
@@ -61,9 +67,9 @@ const CartItem = ({ item }) => {
           >
             🗑️
           </span>
-        </div>
-      </div>
-    </div>
+        
+        </td>
+      </tr>
   );
 }
 
