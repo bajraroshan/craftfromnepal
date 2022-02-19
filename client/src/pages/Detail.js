@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { pluralize } from "../utils/helpers";
-import { useQuery } from '@apollo/client';
+import { useQuery } from "@apollo/client";
 
 import { Container, Row, Col } from "react-bootstrap";
 
-import Cart from '../components/Cart';
-import { useStoreContext } from '../utils/GlobalState';
+import Cart from "../components/Cart";
+import { useStoreContext } from "../utils/GlobalState";
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
   UPDATE_PRODUCTS,
-} from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
-import { idbPromise } from '../utils/helpers';
-import spinner from '../assets/spinner.gif';
+} from "../utils/actions";
+import { QUERY_PRODUCTS } from "../utils/queries";
+import { idbPromise } from "../utils/helpers";
+import spinner from "../assets/spinner.gif";
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
@@ -40,12 +40,12 @@ function Detail() {
       });
 
       data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+        idbPromise("products", "put", product);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
+      idbPromise("products", "get").then((indexedProducts) => {
         dispatch({
           type: UPDATE_PRODUCTS,
           products: indexedProducts,
@@ -62,7 +62,7 @@ function Detail() {
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
-      idbPromise('cart', 'put', {
+      idbPromise("cart", "put", {
         ...itemInCart,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
@@ -71,7 +71,7 @@ function Detail() {
         type: ADD_TO_CART,
         product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
     }
   };
 
@@ -81,45 +81,46 @@ function Detail() {
       _id: currentProduct._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentProduct });
+    idbPromise("cart", "delete", { ...currentProduct });
   };
 
   return (
     <>
       {currentProduct && cart ? (
-        <Container className='m-5'>
+        <Container className="py-5">
           <Row>
-            <Col xs lg="6">
-            <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
-          />
+            <Col xs="12" lg="6">
+              <img
+                src={`/images/${currentProduct.image}`}
+                alt={currentProduct.name}
+              />
             </Col>
-            <Col xs lg="6">
-            <h2>{currentProduct.name}</h2>
-            <strong>Price:</strong>${currentProduct.price}{' '}
+            <Col xs="12" lg="6">
+              <div className="product-details">
+                <h2 className="hr">{currentProduct.name}</h2>
+                <div className="product-detail-price hr">
+                  ${currentProduct.price}{" "}
+                </div>
+                <div className="product-detail-desc hr">
+                  {currentProduct.description}
+                </div>
+                <div className="qty-stock hr">
+                  {currentProduct.quantity <= 0 ? (
+                    <p style={{ color: "red" }}>Out Of Stock</p>
+                  ) : (
+                    <p style={{ color: "green" }}>
+                      {currentProduct.quantity}{" "}
+                      {pluralize("item", currentProduct.quantity)} in stock
+                    </p>
+                  )}
+                </div>
 
-<p>{currentProduct.description}</p>
-
-{currentProduct.quantity <= 0 ? (
-          <p style={{ color: "red" }}>Out Of Stock</p>
-        ) : (
-          <p style={{ color: "green" }}>
-            {currentProduct.quantity} {pluralize("item", currentProduct.quantity)} in stock
-          </p>
-        )}
-<p>
-            <button onClick={addToCart}>Add to Cart</button>
-            
-          </p>
-              </Col>
+                <div className="add-to-cart">
+                  <button onClick={addToCart}>Add to Cart</button>
+                </div>
+              </div>
+            </Col>
           </Row>
-          
-
-         
-          
-
-          
         </Container>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}

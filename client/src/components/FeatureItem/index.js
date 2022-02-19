@@ -35,7 +35,7 @@ function FeatureItem(item) {
   };
 
   return (
-    <Col xs md="4" lg="3">
+    <Col xs="12" md="6" lg="4" xl="3">
       <div className="card single-product">
       <Link to={`/products/${_id}`}>
         <img alt={name} src={`/images/${image}`} />

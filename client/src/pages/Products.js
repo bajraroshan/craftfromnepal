@@ -7,12 +7,12 @@ import ProductList from "../components/ProductList";
 const Products = () => {
   return (
     <>
-      <Container className="m-5">
+      <Container className="py-5">
         <Row>
-          <Col xs lg="3">
+          <Col xs="12" md="4" lg="3">
             <CategoryMenu />
           </Col>
-          <Col xs lg="9">
+          <Col xs="12" md="8" lg="9">
             <ProductList />
           </Col>
         </Row>

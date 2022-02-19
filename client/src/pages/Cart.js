@@ -6,7 +6,7 @@ import Cart from "../components/Cart";
 const CartPage = () => {
   return (
     <>
-      <Container className="m-5">
+      <Container className="py-5">
         <Cart />
       </Container>
     </>
