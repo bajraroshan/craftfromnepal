@@ -75,14 +75,6 @@ function Detail() {
     }
   };
 
-  const removeFromCart = () => {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      _id: currentProduct._id,
-    });
-
-    idbPromise("cart", "delete", { ...currentProduct });
-  };
 
   return (
     <>
@@ -104,21 +96,32 @@ function Detail() {
                 <div className="product-detail-desc hr">
                   {currentProduct.description}
                 </div>
-                <div className="qty-stock hr">
+                
                   {currentProduct.quantity <= 0 ? (
+                    <>
+                    <div className="qty-stock hr">
                     <p style={{ color: "red" }}>Out Of Stock</p>
+                    </div>
+                    <div className="add-to-cart">
+                    <button disabled onClick={addToCart}>Add to Cart</button>
+                  </div>
+                  </>
                   ) : (
+                    <>
+                    <div className="qty-stock hr">
                     <p style={{ color: "green" }}>
                       {currentProduct.quantity}{" "}
                       {pluralize("item", currentProduct.quantity)} in stock
                     </p>
+                    </div>
+                    <div className="add-to-cart">
+                    <button onClick={addToCart}>Add to Cart</button>
+                    </div>
+                    </>
                   )}
                 </div>
 
-                <div className="add-to-cart">
-                  <button onClick={addToCart}>Add to Cart</button>
-                </div>
-              </div>
+                
             </Col>
           </Row>
         </Container>

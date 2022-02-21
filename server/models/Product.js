@@ -2,6 +2,17 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const reviewSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const productSchema = new Schema({
   name: {
     type: String,
@@ -9,7 +20,8 @@ const productSchema = new Schema({
     trim: true
   },
   description: {
-    type: String
+    type: String,
+    required: true
   },
   image: {
     type: String
@@ -28,7 +40,19 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
+  },
+  reviews: [reviewSchema],
+  rating: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  numReviews: {
+    type: Number,
+    required: true,
+    default: 0,
   }
+  
 });
 
 const Product = mongoose.model('Product', productSchema);

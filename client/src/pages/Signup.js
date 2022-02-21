@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import { Card, Col, Row, Container, Form, Button } from "react-bootstrap";
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -31,56 +32,64 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+    <Container className="py-5">
+      <Row className="justify-content-md-center">
+        <Col xs lg="4">
+          <Card className="signin-box">
+            <Card.Body>
+              <Card.Title className="mb-3">Create an Account</Card.Title>
 
-      <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            placeholder="First"
-            name="firstName"
-            type="firstName"
-            id="firstName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            placeholder="Last"
-            name="lastName"
-            type="lastName"
-            id="lastName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+              <Form onSubmit={handleFormSubmit}>
+
+              <Form.Group className="mb-3">
+                  <Form.Control
+                    type="firstName"
+                    placeholder="First Name"
+                    name="firstName"
+                    id="firstName"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="lastName"
+                    placeholder="Last Name"
+                    name="lastName"
+                    id="lastName"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="email"
+                    placeholder="Your Email"
+                    name="email"
+                    id="email"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="password"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Button type="submit">Register</Button>
+
+                <p className="mt-3">Have already an account? <Link to="/login">Login here</Link></p>
+                </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

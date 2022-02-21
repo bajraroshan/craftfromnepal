@@ -117,10 +117,6 @@ span[role="img"] {
   cursor: default;
 }
 
-form {
-  width: 40%;
-}
-
 input {
   font-size: 1rem;
   padding: 0.25rem;
@@ -352,4 +348,21 @@ input:focus {
 .cart .text-right{
   text-align: right;
   padding: 1rem;
+}
+.signin-box{
+  padding: 2rem
+}
+.signin-box .card-title{
+  text-align: center;
+  font-size: 1.5rem;
+}
+.signin-box .card-body button{
+  background-color: var(--tertiary);
+  border: none;
+  width: 100%;
+  padding: .5rem;
+} 
+footer{
+  background-color: var(--dark);
+  color: var(--light);
 }
