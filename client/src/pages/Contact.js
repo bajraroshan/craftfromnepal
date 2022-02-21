@@ -1,12 +1,16 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 
 const Contact = () => {
   return (
     <>
       <Container className="m-5">
-        This is Contact Page
+        <Row>
+          <Col>
+          
+          </Col>
+        </Row>
       </Container>
     </>
   );
