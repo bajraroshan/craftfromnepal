@@ -40,13 +40,13 @@ function Navigation() {
       <Container>
         <Row>
           <Col>
-          <h1 className="logo">
+            <h1 className="logo">
               <Link to="/">
                 <img src={logo} alt="Craft from Nepal" />
               </Link>
             </h1>
-          
-          <Navbar expand="md" variant="dark">
+
+            <Navbar expand="md" variant="dark">
               <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
@@ -82,7 +82,7 @@ function Navigation() {
             </Navbar>
           </Col>
         </Row>
-          </Container>
+      </Container>
     </header>
   );
 }
