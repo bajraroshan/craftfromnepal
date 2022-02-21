@@ -8,6 +8,7 @@ const Contact = () => {
       <Container className="m-5">
         <Row>
           <Col>
+            This is Contact Page.
           
           </Col>
         </Row>
