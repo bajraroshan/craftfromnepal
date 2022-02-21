@@ -1,7 +1,6 @@
 :root {
-  --primary: #8b4726;
-  --secondary: #dc143c;
-  --tertiary: #003893;
+  --primary: #dc143c;
+  --secondary: #003893;
   --white: #fff;
   --light: #fafafa;
   --dark: #272f32;
@@ -72,7 +71,7 @@ p {
 }
 
 a {
-  color: var(--tertiary);
+  color: var(--secondary);
   text-decoration: none;
   font-weight: bold;
 }
@@ -93,14 +92,15 @@ header a {
   color: var(--light);
 }
 
-button {
+button,
+button.btn {
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 1rem;
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: var(--secondary);
+  background-color: var(--primary);
 }
 
 
@@ -127,7 +127,7 @@ input {
 }
 
 input:focus {
-  border: 1px solid var(--secondary);
+  border: 1px solid var(--primary);
   box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
 }
 
@@ -223,18 +223,18 @@ input:focus {
 .hero-img-content h2 span{
   display: block;
   font-weight: 700;
-  color: var(--tertiary);
+  color: var(--secondary);
 }
 .hero-img-content a{
   background-color: var(--light);
-  color: var(--secondary);
+  color: var(--primary);
   padding: .5rem 2rem;
   text-decoration: none;
   transition: 0.5s ease;
   text-transform: uppercase;
 }
 .hero-img-content a:hover{
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: var(--light);
 }
 .featured-products{
@@ -277,11 +277,14 @@ input:focus {
   text-transform: uppercase;
   transition: 0.5s ease;
 }
+.product-btns button.btn{
+  background-color: var(--primary);
+}
 .product-btns .btn:hover, .product-btns button:hover{
   background-color: var(--dark);
 }
 .product-btns .btn{
-  background-color: var(--tertiary);
+  background-color: var(--secondary);
   border-radius: 0;
 }
 .product-btns .btn a{
@@ -357,7 +360,7 @@ input:focus {
   font-size: 1.5rem;
 }
 .signin-box .card-body button{
-  background-color: var(--tertiary);
+  background-color: var(--secondary);
   border: none;
   width: 100%;
   padding: .5rem;

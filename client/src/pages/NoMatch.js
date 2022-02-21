@@ -1,18 +1,15 @@
 import React from "react";
-import Jumbotron from "../components/Jumbotron";
+import { Col, Container, Row } from "react-bootstrap";
 
 const NoMatch = () => {
   return (
-    <div>
-      <Jumbotron>
-        <h1>404 Page Not Found</h1>
-        <h1>
-          <span role="img" aria-label="Face With Rolling Eyes Emoji">
-            🙄
-          </span>
-        </h1>
-      </Jumbotron>
-    </div>
+    <Container className="py-5">
+      <Row>
+        <Col xs>
+          <h1 className="py-5 text-center">404 Page Not Found</h1> 
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
