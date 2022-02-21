@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 const Contact = () => {
   return (
     <>
-      <Container className="m-5">
+      <Container className="mt-5">
         <Row>
           <Col>
             This is Contact Page.
