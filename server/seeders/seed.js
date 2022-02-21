@@ -21,7 +21,7 @@ db.once('open', async () => {
       name: 'Shakyamuni Buddha Statue',
       description:
         'Shakyamuni is the Buddha of our time. He is  the glorious root teacher of all the diverse lineages that make up Buddhism as we know it. Born Siddhartha Gautama more than 2500 years ago, he was the crown prince of the Shakya kingdom located in the Himalayan foothills of what is now southern Nepal. He left luxurious palace life behind him, however, in pursuit of the truth of   the origin of suffering and the cessation of fear. His astounding courage, determination, wisdom and compassion led to his perfect enlightenment despite seemingly insurmountable obstacles. His teachings have transformed individuals   and nations throughout the world and still speak to us today.',
-      image: 'buddha.jpeg',
+      image: 'buddha.jpg',
       category: categories[0]._id,
       price: 999.99,
       quantity: 5
@@ -49,7 +49,7 @@ db.once('open', async () => {
       category: categories[1]._id,
       description:
         "This listing is for a handmade Tibetan healing ring with carved Om mani pad hum mantra.  There are four options to choose from.  Two hand crafted Buddha of compasion three metal rings, one silver plated Buddha of compassion mantra ring and one with yak bone dzi bead.  This ring is adjustable and handmade in Kathmandu Nepal. <br /> <br /> The script is the mantra of Avalokteshwara the Buddha of compasstion and it means 'hail to the jewel in the lotus'. Mani means jewel and pema means lotus. OM includes three letters which are AH, O and MA and it is also Om Ah and the last letter HUM together makes the word OM AH HUM. This word is a blessing word, because whenever we bless something whether we are blessing the earth or food or whatever Tibetan people say OM AH HUM. After that you visualize that it is purified. So this mantra is very powerful mantra. There is no Tibetan people who don't know OM MANI PADME HUM mantra. We say this mantra every time when you see a dead being, sick person or animal. We visualize that this mantra will help the being. That is why Tibetan people wear wrist malas with these designs. ",
-      image: 'silver-ring.jpeg',
+      image: 'silver-ring.jpg',
       price: 9.99,
       quantity: 50
     },
