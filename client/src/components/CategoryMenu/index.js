@@ -42,14 +42,13 @@ function CategoryMenu() {
     });
   };
 
+
   return (
     <ul className='category-nav'>
-      {categories.map((item, index) => (
+      {categories.map((item,index) => (
         <li>
-          {/* <Link to="" onClick={() => {
-            handleClick(item._id);}}>{item.name}</Link> */}
         <button
-          key={item._id}
+          key={index}
           onClick={() => {
             handleClick(item._id);
           }}

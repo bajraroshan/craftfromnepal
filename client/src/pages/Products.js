@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CategoryMenu from "../components/CategoryMenu";
 import ProductList from "../components/ProductList";
-// import Cart from "../components/Cart";
 
 const Products = () => {
   return (
