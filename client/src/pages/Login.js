@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
+import { Card, Col, Row, Container, Form, Button } from "react-bootstrap";
 
 function Login(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
@@ -30,41 +31,49 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+    <Container className="py-5">
+      <Row className="justify-content-md-center">
+        <Col xs lg="4">
+          <Card className="signin-box">
+            <Card.Body>
+              <Card.Title className="mb-3">Sign In</Card.Title>
 
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
-          </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+              <Form onSubmit={handleFormSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="email"
+                    placeholder="Username/Email"
+                    name="email"
+                    id="email"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="password"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                {error ? (
+                  <div>
+                    <p className="error-text">
+                      The provided credentials are incorrect
+                    </p>
+                  </div>
+                ) : null}
+                <Button type="submit">Login</Button>
+
+                <p className="mt-3">Don't have an account? <Link to="/signup">Register here</Link></p>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

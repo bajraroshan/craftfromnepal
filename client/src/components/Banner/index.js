@@ -9,7 +9,7 @@ function Banner() {
       <Container>   
           <div className="column-full hero-img-content">
             <h2>Hand Carved <span>Tara</span></h2>
-            <Link to="/">Shop Now </Link>
+            <Link to="/products">Browse More Products</Link>
           </div>
         
         </Container>
