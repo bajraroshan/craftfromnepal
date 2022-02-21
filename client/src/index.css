@@ -187,9 +187,20 @@ input:focus {
 .error-text {
   color: var(--error);
 }
-
+header .col{
+  position: relative; 
+}
+.logo{
+  position: absolute;
+    z-index: 9;
+    left: 0;
+    top: 0;
+}
+.logo img{
+  max-height: 4.0625rem;
+}
 .navbar{
-  margin-top: .75rem;
+  margin: .75rem 0;
 }
 
 .navbar .navbar-nav .nav-link{
@@ -204,6 +215,7 @@ input:focus {
 .hero-img{
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -211,7 +223,7 @@ input:focus {
   align-items: center;
   display: flex;
   isolation: isolate;
-  margin-top: -94px;
+  margin-top: -88px;
 }
 .hero-img-content h2{
   font-size: 4rem;
@@ -368,4 +380,32 @@ input:focus {
 footer{
   background-color: var(--dark);
   color: var(--light);
+}
+
+@media only screen and (max-width: 767px) {
+  header{
+    background-color: #7F7F7F;
+  }
+  .navbar{
+    margin-top: 0;
+  }
+  .navbar .container{
+    justify-content: end;
+  }
+  .logo{
+    left: 2.12rem;
+  }
+  .logo img{
+    max-height: 3rem;
+  }
+  .navbar-nav{
+    margin-top: 1rem;
+  }
+  .nav-item{
+    border: 1px solid var(--light);
+    margin-top: -1px;
+  }
+  .navbar-nav .nav-link{
+    padding: .5rem 1rem;
+  }
 }

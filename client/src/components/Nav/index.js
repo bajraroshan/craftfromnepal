@@ -1,7 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Col, NavDropdown } from "react-bootstrap";
 
 import logo from "../../assets/craftnepal.png";
 
@@ -37,17 +37,16 @@ function Navigation() {
 
   return (
     <header>
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-3 col-lg-2">
-            <h1>
+      <Container>
+        <Row>
+          <Col>
+          <h1 className="logo">
               <Link to="/">
                 <img src={logo} alt="Craft from Nepal" />
               </Link>
             </h1>
-          </div>
-          <div className="col-sm-9 col-lg-10">
-            <Navbar>
+          
+          <Navbar expand="md" variant="dark">
               <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
@@ -81,9 +80,9 @@ function Navigation() {
                 </Navbar.Collapse>
               </Container>
             </Navbar>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+          </Container>
     </header>
   );
 }
