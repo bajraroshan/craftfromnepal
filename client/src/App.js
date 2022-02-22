@@ -56,8 +56,7 @@ function App() {
               <Route exact path="/products/:id" component={Detail} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/contact" component={Contact} />
-              <Route component={NoMatch} />
-            </Switch>
+              </Switch>
             <Footer />
           </StoreProvider>
         </div>

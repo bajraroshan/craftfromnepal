@@ -1,13 +1,14 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Row, Col, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 import logo from "../../assets/craftnepal.png";
 
 function Navigation() {
   function showNavigation() {
     if (Auth.loggedIn()) {
+      console.log(Auth.loggedIn);
       return (
         <>
           <Nav.Item>
@@ -45,6 +46,8 @@ function Navigation() {
                 <img src={logo} alt="Craft from Nepal" />
               </Link>
             </h1>
+
+            
 
             <Navbar expand="md" variant="dark">
               <Container>
