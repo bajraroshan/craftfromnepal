@@ -35,22 +35,12 @@ function FeatureList() {
     }
   }, [data, loading, dispatch]);
 
-  function filterProducts() {
-    if (!currentCategory) {
-      return state.products;
-    }
-
-    return state.products.filter(
-      (product) => product.category._id === currentCategory
-    );
-  }
-
   return (
     <div className="featured-products">
       <h2>Featured Products</h2>
       {state.products.length ? (
         <Row>
-          {filterProducts().map((product, index) => 
+          {state.products.map((product, index) => 
             index < 8 && ( // <= only 8 items
             <FeatureItem
               key={product._id}
