@@ -87,6 +87,9 @@ header {
   padding: .5rem 0 0;
   background: rgba(0,0,0,.5);
 }
+header + .container {
+  min-height: calc(100vh - 88px - 120px - 3rem);
+}
 
 header a {
   color: var(--light);
@@ -114,7 +117,10 @@ img {
 }
 
 span[role="img"] {
-  cursor: default;
+  cursor: pointer;
+}
+span[role="img"] i.fa-solid::before{
+  color: var(--primary);
 }
 
 input {
