@@ -81,12 +81,12 @@ Have a high-quality README (with unique name, description, technologies used, sc
 
 ## DEMO
 
-![Demo 1](https://github.com/bajraroshan/craftfromnepalblob/main/client/src/assets/home.png)
-![Demo 2](https://github.com/bajraroshan/craftfromnepalblob/main/client/src/assets/products.png)
-![Demo 3](https://github.com/bajraroshan/craftfromnepalblob/main/client/src/assets/product-detail.png)
-![Demo 4](https://github.com/bajraroshan/craftfromnepalblob/main/client/src/assets/login.png)
-![Demo 5](https://github.com/bajraroshan/craftfromnepalblob/main/client/src/assets/signup.png)
-![Demo 6](https://github.com/bajraroshan/craftfromnepalblob/main/client/src/assets/contact.png)
+![Demo 1](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/home.png)
+![Demo 2](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/products.png)
+![Demo 3](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/product-detail.png)
+![Demo 4](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/login.png)
+![Demo 5](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/signup.png)
+![Demo 6](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/contact.png)
 ![Demo 7](https://github.com/bajraroshan/craftfromnepal/blob/main/client/src/assets/cart.png)
 
 ------------------------------------------------------------------------------
