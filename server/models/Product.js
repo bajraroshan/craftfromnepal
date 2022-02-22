@@ -41,6 +41,9 @@ const productSchema = new Schema({
     ref: 'Category',
     required: true
   },
+  isfeatured: {
+    type: Boolean,
+  },
   reviews: [reviewSchema],
   rating: {
     type: Number,
