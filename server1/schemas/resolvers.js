@@ -40,6 +40,9 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    users: async () => {
+      return User.find().populate('category');
+    },
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -52,13 +55,17 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    orders: async () => {
+      return order.find().populate('category');
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ products: args.products });
       const line_items = [];
 
       const { products } = await order.populate('products').execPopulate();
-
+      console.log(products);
+      
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
           name: products[i].name,
@@ -90,10 +97,14 @@ const resolvers = {
     }
   },
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (parent, { firstName, lastName, email, password }) => {
+      const user = await User.create({
+        firstName,
+        lastName,
+        email,
+        password
+      });
       const token = signToken(user);
-
       return { token, user };
     },
     addOrder: async (parent, { products }, context) => {
